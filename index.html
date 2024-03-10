@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography</title>
+    <style>
+        body {
+            background-image: url("https://w0.peakpx.com/wallpaper/828/444/HD-wallpaper-we-are-the-anonymous-anonymous-hackers-group-attack.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: lightgray;
+            margin: 0;
+            padding: 50;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        #message {
+            margin-top: 40px;
+        }
+        .textarea {
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Steganography</h1>
+    <form action="/hide" method="post" enctype="multipart/form-data">
+        <label for="file">Select file to upload:</label><br>
+        <input type="file" id="file" name="file" accept=".jpg, .png,.pdf , .mp4"><br>
+        <textarea name="message" placeholder="Enter your message"></textarea><br>
+        <input type="submit" value="Hide message">
+    </form>
+
+    <hr>
+
+    <form action="/retrieve" method="post" enctype="multipart/form-data">
+        <label  for="file">Select file to retrieve message from: </label><br>
+        <input type="file" id="file" name="file" accept=".jpg, .png , .pdf , .mp4"><br>
+        <input type="submit" value="Retrieve message">
+    </form>
+
+    <div id="message">
+        {% if message %}
+            <p>Retrieved message: {{ message }}</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
